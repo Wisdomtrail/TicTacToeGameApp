@@ -17,7 +17,7 @@ function MyClass() {
 
   function handleButtonOnClickInput(event, value){
     const { name } = event.target;
-    setData({ ...data, [name]: parseInt(data[name]) + parseInt(value) });
+    setData({ ...data, [name]: (data[name]) + (value) });
   }
   function handleButtonOnClickInputdecrement(event, value){
     const { name } = event.target;

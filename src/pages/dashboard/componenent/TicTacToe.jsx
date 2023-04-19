@@ -13,12 +13,27 @@ function TicTacToe() {
   const [cell9Text, setCell9Text] = useState("");
   const [char, setChar] = useState("X");
 
-  function setCharChar(char) {
+  function changeChar(char) {
     setChar(char === "X" ? "O" : "X");
   }
 
-  function handleNew(){
-   
+  function checkForWin(char){
+    if (
+      (cell1Text === char && cell2Text === char && cell3Text === char) ||
+      (cell4Text === char && cell5Text === char && cell6Text === char) ||
+      (cell7Text === char && cell8Text === char && cell9Text === char) ||
+      (cell1Text === char && cell4Text === char && cell7Text === char) ||
+      (cell2Text === char && cell5Text === char && cell8Text === char) ||
+      (cell3Text === char && cell6Text === char && cell9Text === char) ||
+      (cell1Text === char && cell5Text === char && cell9Text === char) ||
+      (cell3Text === char && cell5Text === char && cell7Text === char)
+    ) {
+      alert("Player "+char+" wins!");
+      newGame();
+    }
+  }
+
+  function newGame(){
     setCell1Text("");
     setCell2Text("");
     setCell3Text("");
@@ -34,51 +49,48 @@ function TicTacToe() {
     const input = document.getElementById("id");
     const num = input.value;
 
-    if (
-      (cell1Text === char && cell2Text === char && cell3Text === char) ||
-      (cell4Text === char && cell5Text === char && cell6Text === char) ||
-      (cell7Text === char && cell8Text === char && cell9Text === char) ||
-      (cell1Text === char && cell4Text === char && cell7Text === char) ||
-      (cell2Text === char && cell5Text === char && cell8Text === char) ||
-      (cell3Text === char && cell6Text === char && cell9Text === char) ||
-      (cell1Text === char && cell5Text === char && cell9Text === char) ||
-      (cell3Text === char && cell5Text === char && cell7Text === char)
-    ) {
-      alert(`Player ${char} wins!`);
-      handleNew();
-    }
+    
+   
   
     if (num === "1" && cell1Text === "") {
-      setCharChar(char);
       setCell1Text(char);
+      checkForWin(char);
+      changeChar(char);
     } else if (num === "2" && cell2Text === "") {
-      setCharChar(char);
       setCell2Text(char);
+      checkForWin(char);
+      changeChar(char);
     } else if (num === "3" && cell3Text === "") {
-      setCharChar(char);
       setCell3Text(char);
+      checkForWin(char);
+      changeChar(char);
     } else if (num === "4" && cell4Text === "") {
-      setCharChar(char);
       setCell4Text(char);
+      checkForWin(char);
+      changeChar(char);
     } else if (num === "5" && cell5Text === "") {
-      setCharChar(char);
       setCell5Text(char);
+      checkForWin(char);
+      changeChar(char);
     } else if (num === "6" && cell6Text === "") {
-      setCharChar(char);
       setCell6Text(char);
+      checkForWin(char);
+      changeChar(char);
     } else if (num === "7" && cell7Text === "") {
-      setCharChar(char);
       setCell7Text(char);
+      checkForWin(char);
+      changeChar(char);
     } else if (num === "8" && cell8Text === "") {
-      setCharChar(char);
       setCell8Text(char);
+      checkForWin(char);
+      changeChar(char);
     } else if (num === "9" && cell9Text === "") {
-      setCharChar(char);
       setCell9Text(char);
+      checkForWin(char);
+      changeChar(char);
     }
     
   }
-  
 
     return (
       <center>
@@ -113,7 +125,7 @@ function TicTacToe() {
           <button id="button" onClick={handleClick}>
             press
           </button>
-          <button id="button" onClick={handleNew}>
+          <button id="button" onClick={newGame}>
             New Game
           </button>
         </div>
